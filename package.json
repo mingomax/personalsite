@@ -4,6 +4,13 @@
     "description": "Starter personal site template boilerplate based on Webpack with SASS/PostCSS and babel ES6/7 support.",
     "main": "src/index.html",
     "scripts": {
+        "start": "webpack server --config build/webpack.dev.config.js --mode=development",
+        "build": "webpack --config build/webpack.dev.config.js --mode=development",
+        "watch": "webpack --config build/webpack.dev.config.js --mode=development --watch",
+        "bundle": "npm install && npm run watch",
+        "dev": "webpack serve --config build/webpack.dev.config.js --mode=development",
+        "lint:sass": "sass-lint -v -q",
+        "lint:js": "eslint --ext .js src/js/",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
