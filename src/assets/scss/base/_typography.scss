@@ -1,0 +1,82 @@
+@import url('//fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,400;1,500;1,700;1,800&display=swap');
+
+@font-face {
+    font-family: 'Font Icons';
+    src: url('/assets/fonts/fontello-icons.eot?49264205');
+    src: url('/assets/fonts/fontello-icons.eot?49264205#iefix') format('embedded-opentype'),
+        url('/assets/fonts/fontello-icons.woff2?49264205') format('woff2'),
+        url('/assets/fonts/fontello-icons.woff?49264205') format('woff'),
+        url('/assets/fonts/fontello-icons.ttf?49264205') format('truetype'),
+        url('/assets/fonts/fontello-icons.svg?49264205#fontello-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: "Font Icons";
+    font-style: normal;
+    font-weight: normal;
+    speak: never;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .2em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-twitter:before {
+    content: '\e800';
+}
+
+.icon-apple-music:before {
+    content: '\e801';
+}
+
+.icon-mobile:before {
+    content: '\e802';
+}
+
+.icon-mail:before {
+    content: '\e803';
+}
+
+.icon-location:before {
+    content: '\e804';
+}
+
+.icon-clock:before {
+    content: '\e805';
+}
+
+.icon-diamond:before {
+    content: '\f219';
+}
+
+.icon-id-badge:before {
+    content: '\f2c1';
+}
+
+.icon-github:before {
+    content: '\f300';
+}
+
+.icon-facebook:before {
+    content: '\f30c';
+}
+
+.icon-linkedin:before {
+    content: '\f318';
+}
+
+
+.icon-instagram:before {
+    content: '\f32d';
+}
