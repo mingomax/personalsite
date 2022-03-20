@@ -1,45 +1,29 @@
-/* Typography */
-$font-space-mono: 'Space Mono',
-monospace;
-$font-open-sans: 'Open Sans',
-sans-serif;
-$font-icons: 'Font Icons';
-$font-weight--normal: 400;
-$font-weight--bold: 700;
+$font-size-base: 0.875rem;
+$line-heigh-base: calc(20/14);
 
 /* Breakpoints */
-$breakpoints: (
-  'phone': 320px,
-  'smartphone': 425px,
-  'tablet': 768px,
-  'laptop': 1024px,
-  'desktop': 1441px
-);
+$breakpoints: ('phone': 320px,
+    'smartphone': 425px,
+    'tablet': 768px,
+    'laptop': 1024px,
+    'desktop': 1441px);
 
 /* Paths */
 /* Grid setup */
-/* Colour palette */
-$black: #000;
-$white: #fff;
-$light-gray: #B3B3B3;
-$dark-green: #164a41;
-$medium-green: #4d774e;
-$light-green: #9dc88d;
-$natural-yellow: #f1b24a;
-$caption-color: #464646;
-$accent-color: #999;
-$link-color: #fff;
-
 /* Components */
-
 /* Utilities */
 /**
  * Z-index levels
  **/
-
 $z-index-level-1: 9;
 $z-index-level-2: 99;
 $z-index-level-3: 999;
 $z-index-level-4: 9999;
 $z-index-level-5: 99999;
 $z-index-level-6: 999999;
+
+:root {
+    --font-size-base: #{$font-size-base};
+    --line-height-base: #{$line-heigh-base};
+    --max-width: 960px;
+}

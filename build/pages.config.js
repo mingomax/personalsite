@@ -25,6 +25,7 @@ module.exports = {
       },
       {
         path: path.join(__dirname, "../src/pages/home.html"),
+        template: "index.html",
       },
       {
         path: path.join(__dirname, "../src/pages/styleguide.html"),

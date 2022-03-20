@@ -1,13 +1,58 @@
-header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid $white;
-    z-index: $z-index-level-2;
+@import "./header/menu-hamburger";
+@import "./header/brand";
+@import "./header/menu";
 
-    .header-logo {
-        width: 141px;
-        margin: 1em;
+.main {
+    &-header {
+        position: fixed;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        justify-content: space-around;
+        background: rgba(55, 55, 55, 0.9);
+        z-index: $z-index-level-1;
+
+        &--mobile {
+            height: 100%;
+        }
+    
+        @include media(">=tablet") {
+            top: 0;
+            width: 100%;
+            height: auto;
+            align-content: center;
+            background: $brand-green-02;
+            transform: none;
+            padding: 2rem 0;
+
+            &.condensed {
+                padding: 0;
+            }
+        }
+    }
+
+    &-nav {
+        grid-row: 2;
+        padding-bottom: 4rem;
+        transform: translate3d(-100%, 0, 0);
+        display: none;
+
+        @include media(">=tablet") {
+            display: flex;
+            grid-row: unset;
+            transform: translate3d(0, 0, 0);
+        }
+
+        &--show {
+            @include easeOut;
+            display: flex;
+            transform: translate3d(0, 0, 0);
+        }
+    
+
+        @include media('>=tablet') {
+            grid-row: unset;
+            padding-bottom: unset;
+        }
     }
 }

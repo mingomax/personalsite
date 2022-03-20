@@ -1,0 +1,45 @@
+/**
+* Menu Button
+*/
+.menu-btn {
+    @include easeOut;
+    position: absolute;
+    z-index: $z-index-level-3;
+    right: 14px;
+    top: 25px;
+    cursor: pointer;
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    >div {
+        @include easeOut;
+        background: $white;
+        width: 28px;
+        height: 3px;
+        margin: 0 0 5px 0;
+    }
+
+    &.close {
+        transform: rotate(180deg);
+
+        >div {
+
+            // rotate line top
+            &:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            // hode line middle
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            // roate line bottom
+            &:nth-child(3) {
+                transform: rotate(135deg) translate(6px, -6px);
+            }
+        }
+    }
+}

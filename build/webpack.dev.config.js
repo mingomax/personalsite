@@ -7,17 +7,15 @@ const templateConfig = require("./pages.config");
 
 module.exports = merge(webpackConfiguration, {
   mode: "development",
-
   /* Manage source maps generation process */
-  devtool: "eval-source-map",
-
+  devtool: "eval-cheap-source-map",
   /* Development Server Configuration */
   devServer: {
     liveReload: true,
     watchFiles: {
       paths: ["src/**/*.scss", "src/**/*.js", "src/**/*.html"],
       options: {
-        usePolling: false,
+        usePolling: true,
       },
     },
     static: {
@@ -27,6 +25,7 @@ module.exports = merge(webpackConfiguration, {
     },
     client: {
       overlay: true,
+      logging: 'error',
     },
     open: true,
     compress: true,

@@ -1,0 +1,17 @@
+.header {
+    
+    &-logo {
+        grid-row: 3;
+        margin-top: .75rem;
+        width: 177px;
+
+        @include media(">=tablet") {
+            grid-row: unset;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

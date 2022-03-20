@@ -2,3 +2,23 @@
  * Dirty hacks, yes internet explorer, we are looking at you
  * Use when autoprefixer and other solutions doesn work.
 */
+
+.section {
+    margin: 0 0 0 2.4rem;
+    height: 250vh;
+
+    &#home {
+        position: relative;
+        margin-top: 3.5rem;
+        background: $brand-green-04;
+        padding: 3.5rem 3.5rem 5rem 0;
+
+        @include media('>=tablet') {
+            margin-top: 7rem;;
+        }
+    }
+
+    &#about-me {
+        background: var(--yellow);
+    }
+}

@@ -1,0 +1,35 @@
+/* Colour palette */
+// brand color palette
+$brand-green-01: #09170e;
+$brand-green-02: #2e5221;
+$brand-green-03: #689d4f;
+$brand-green-04: #56823c;
+$brand-green-04: #4a6d39;
+$brand-green-05: #a2cd8f;
+$brand-white-01: #fbfcfc;
+$brand-yellow-01: #be8c32;
+
+$black: $brand-green-01;
+$white: $brand-white-01;
+$yellow: $brand-yellow-01;
+
+// core semantic base colors
+$primary: $brand-green-02;
+$secondary: $brand-green-05;
+$green: #{$brand-green-03};
+
+:root {
+    --white: #{$white};
+    --black: #{$black};
+    --yellow: #{$yellow};
+    --green: #{$green};
+
+    --primary: #{$primary};
+    --secondary: #{$secondary};
+    --body-bg-fallback: rgb(46, 82, 33);
+    --body-bg: linear-gradient(90deg,
+            rgba(46, 82, 33, 1) 14%,
+            rgba(48, 85, 35, 1) 28%,
+            rgba(86, 130, 60, 1) 55%,
+            rgba(162, 205, 143, 1) 100%);
+}

@@ -1,0 +1,73 @@
+.menu {
+    @include easeOut;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 100%;
+
+    @include media(">=tablet") {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    &-item {
+        position: 
+        relative;
+        display: flex;
+        justify-content: flex-end;
+        height: 100%;
+        transform: translate3d(400px, 0, 0);
+        @extend %item-separator;
+        
+        &.show {
+            @include easeOut;
+            //Slide in from the bottom
+            transform: translate3d(0, 0, 0);
+        }
+        // delay each nav-item slide by 0.1s
+        @for $x from 1 through 4 {
+            &:nth-child(#{$x}) {
+                transition-delay: $x * 0.1s;
+            }
+        }
+
+
+        @include media(">=tablet") {
+            align-items: start;
+            transform: unset;
+        }
+
+        > a {
+            @include easeOut;
+            display: inline-block;
+            font-size: 1.6rem;
+            font-weight: $font-weight--bold;
+            text-transform: uppercase;
+
+            &.current,            
+            &:hover {
+                box-shadow: inset 0 -4  0 var(--green);
+                color: var(--yellow);
+                transform: scale(1.1);
+                transition: 0.3s;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    display: inline-block;
+                    bottom: 52px;
+                    background: var(--yellow);
+                    box-shadow: inset 0 -4  0 var(--green);
+                    width: 100%;
+                    height: 4px;
+                    transform: scale(1, 1);
+                    transition: 0.3s;
+
+                    @include media(">=tablet") {
+                        bottom: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

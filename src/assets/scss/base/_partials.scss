@@ -1,0 +1,47 @@
+%small {
+    // Use string interpolation and calc() to avoid using Sass own max() function.
+    // See: https://github.com/sass/node-sass/issues/2815#issuecomment-575926329
+    font-size: calc(min(0.75rem, #{calc(11/12)}em));
+    line-height: 1rem;
+}
+
+/**
+*
+* Vertical align
+*
+**/
+
+%vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+%item-separator {
+    @include media(">=tablet") {
+        & > a {
+            align-self: center;
+            margin:0 1.75rem;
+        }
+
+        &:after {
+            content: "";
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            position: relative;
+            width: 2.5px;
+            height: 2.5px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        &:last-child {
+            &:after {
+                display: none;
+            }
+        }    
+    }
+}

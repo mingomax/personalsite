@@ -1,13 +1,38 @@
 /**
 *
-* Global rules
+* Border-box sizing by default
 *
 **/
-
-$base__fontPrimary: $font-open-sans;
-$base__fontSize: 18;
-$base__maxWidth: 960px;
-
 html {
+    box-sizing: border-box;
     height: 100%;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    height: 100vh;
+    margin: 0 auto;
+    background: var(--body-bg-fallback);
+    background: var(--body-bg);
+    transition: all .4s ease-in-out;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }

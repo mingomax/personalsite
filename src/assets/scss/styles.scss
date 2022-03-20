@@ -1,33 +1,35 @@
 @charset 'utf-8';
 
+/* Vendor */
+@import 'vendor/include-media';
+@import 'vendor/syntax-highlighting';
+
 /* Core variables */
 @import 'base/variables';
 
 /* CSS Reset */
 @import 'base/reset';
 
-/* Mixins, helpers and functions */
-@import 'base/mixins';
-
-/* CSS base */
-@import 'base/base';
-
-/* CSS print */
-@import 'base/print';
+/* colors definitions */
+@import 'base/colors';
 
 /* Fonts */
 @import 'global/typography';
+/* Mixins, helpers and functions */
+@import 'base/partials';
+@import 'base/mixins';
 
-/* Vendor */
-@import 'vendor/include-media';
-@import 'vendor/syntax-highlighting';
+/* CSS base */
+// @import 'base/base';
+
+/* CSS print */
+@import 'base/print';
 
 /* CSS global */
 @import 'global/global';
 
 /* Components */
-@import 'components/menu',
-'components/header';
+@import 'components/header';
 
 /* Browser specific styles */
 @import 'dirty/hacks';
