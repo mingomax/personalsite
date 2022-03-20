@@ -1,23 +1,34 @@
 @charset 'utf-8';
 
 /* Core variables */
-@import 'base/vars';
+@import 'base/variables';
 
 /* CSS Reset */
 @import 'base/reset';
+
+/* Mixins, helpers and functions */
+@import 'base/mixins';
+
+/* CSS base */
+@import 'base/base';
 
 /* CSS print */
 @import 'base/print';
 
 /* Fonts */
-@import 'base/fonts';
-
-/* Mixins, helpers and functions */
-@import 'base/mixins';
+@import 'global/typography';
 
 /* Vendor */
+@import 'vendor/include-media';
+@import 'vendor/syntax-highlighting';
+
+/* CSS global */
+@import 'global/global';
 
 /* Components */
+@import 'components/menu',
+'components/header';
 
 /* Browser specific styles */
 @import 'dirty/hacks';
+

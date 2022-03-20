@@ -1,164 +1,150 @@
-const path = require("path");
-const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
-const isDevelopment = process.env.NODE_ENV !== "production";
+/**
+ * Webpack main configuration file
+ */
 
-const webpackConfig = {
-  devtool: "source-map",
-  mode: "development",
-  target: "web",
-  context: path.resolve(__dirname, "../src"),
-  entry: ["./assets/js/global.js", "./assets/scss/styles.scss"],
+const path = require("path");
+const fs = require("fs");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+const envConfig = require("./build/shared.config");
+
+const templateFiles = fs
+  .readdirSync(envConfig.paths.source)
+  .filter((file) => path.extname(file).toLowerCase() === ".html");
+
+const htmlPluginEntries = templateFiles.map(
+  (template) =>
+    new HTMLWebpackPlugin({
+      inject: "body",
+      hash: false,
+      filename: template,
+      template: path.resolve(envConfig.paths.source, template),
+      favicon: path.resolve(
+        envConfig.paths.source,
+        "assets/midias/images/favicons",
+        "favicon.ico"
+      ),
+    })
+);
+
+module.exports = {
+  entry: [
+    path.resolve(envConfig.paths.source, "assets/js", "global.js"),
+    path.resolve(envConfig.paths.source, "assets/scss", "styles.scss"),
+  ],
   output: {
-    path: path.resolve(__dirname, "../dist"),
-    filename: "assets/js/[name].[fullhash].bundle.js",
+    filename: "assets/js/[name].js",
+    path: envConfig.paths.output,
   },
-  optimization: {
-    minimizer: [new CssMinimizerPlugin()],
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          name: "vendor",
-          test: /node_modules/,
-          chunks: "all",
-          enforce: true,
-        },
-      },
-    },
-  },
-  devtool: isDevelopment ? "eval-cheap-module-source-map" : "source-map",
   module: {
     rules: [
       {
-        test: /\.s[ac]ss$/i,
-        exclude: /node_modules/,
+        test: /\.((c|sa|sc)ss)$/i,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: "dist/assets",
-            },
-          },
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: isDevelopment,
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              sourceMap: isDevelopment,
-            },
-          },
-          { loader: "resolve-url-loader" },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: isDevelopment,
-              sassOptions: {
-                includePaths: [path.join(__dirname, "./assets/scss")],
-              },
-            },
-          },
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
         ],
-        exclude: "/node_modules",
-      },
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: "html-loader",
-        },
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
-        exclude: "/node_modules/",
-        options: {
-          cacheDirectory: true,
-          presets: [["@babel/preset-env", { targets: "defaults" }]],
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.(png|gif|jpe?g|svg|json)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: envConfig.limits.images,
+          },
+        },
+        generator: {
+          filename: "assets/images/[name].[hash:6][ext]",
         },
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        type: "asset/inline",
-      },
-      {
-        test: /\.(png|jpg|gif|xml|svg|webmanifest)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
-            },
+        test: /\.(eot|ttf|woff|woff2)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: envConfig.limits.images,
           },
-        ],
+        },
+        generator: {
+          filename: "assets/fonts/[name].[hash:6][ext]",
+        },
       },
     ],
   },
+  optimization: {
+    minimizer: [
+      "...",
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            // Lossless optimization with custom option
+            // Feel free to experiment with options for better result for you
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
+              // Svgo configuration here https://github.com/svg/svgo#configuration
+              [
+                "svgo",
+                {
+                  plugins: [
+                    {
+                      name: "removeViewBox",
+                      active: false,
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+      }),
+    ],
+  },
   plugins: [
-    new webpack.DefinePlugin({
-      IS_DEV: isDevelopment,
-    }),
-    new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin({
-      dry: true,
-      verbose: true,
-      cleanOnceBeforeBuildPatterns: ["**/*"],
-      cleanAfterEveryBuildPatterns: ["dist"],
-    }),
     new MiniCssExtractPlugin({
-      filename: isDevelopment
-        ? "assets/css/[name].css"
-        : "assets/css/[name].[contenthash].css",
-      chunkFilename: isDevelopment
-        ? "assets/css/[id].css"
-        : "assets/css/[id].[contenthash].css",
-      linkType: "text/css",
+      filename: "assets/css/[name].css",
     }),
-    new HtmlWebpackPlugin({
-      inject: "body",
-      template: "./index.html",
-      filename: "./index.html",
-      minify: !isDevelopment && {
-        html5: true,
-        collapseWhitespace: true,
-        caseSensitive: true,
-        removeComments: true,
-        removeEmptyElements: true,
-      },
+    new CleanWebpackPlugin({
+      verbose: true,
+      cleanOnceBeforeBuildPatterns: ["**/*", "!stats.json"],
     }),
-    new CopyPlugin({
+    new CopyWebpackPlugin({
       patterns: [
-        { from: "./assets/fonts", to: "../dist/assets/fonts" },
-        // { from: "./assets/midias/images", to: "../dist/assets/images" },
+        {
+          from: path.resolve(envConfig.paths.source, "assets/midias", "brand"),
+          to: path.resolve(envConfig.paths.output, "assets", "images"),
+          toType: "dir",
+          globOptions: {
+            ignore: ["*.DS_Store", "Thumbs.db"],
+          },
+        },
+        {
+          from: path.resolve(
+            envConfig.paths.source,
+            "assets/midias/images",
+            "favicons"
+          ),
+          to: path.resolve(envConfig.paths.output, "assets/images", "favicons"),
+          toType: "dir",
+          globOptions: {
+            ignore: ["*.DS_Store", "Thumbs.db"],
+          },
+        },
       ],
-      options: {
-        concurrency: 100,
-      },
-    }),
-    new BrowserSyncPlugin({
-      host: "localhost",
-      port: 3000,
-      server: { baseDir: ["dist"] },
     }),
   ],
-  resolveLoader: {
-    modules: [path.join(__dirname, "../node_modules")],
-  },
-  resolve: {
-    extensions: ["*", ".js", ".scss"],
-    modules: [path.join(__dirname, "../node_modules")],
-  },
-  stats: {
-    colors: true,
-    children: false,
-  },
+  target: "web",
 };
-
-module.exports = webpackConfig;

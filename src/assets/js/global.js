@@ -1,3 +1,3 @@
-const element = document.getElementsByTagName("body");
-console.log("LOG: ", element);
-element.innerText = "Welcome to the home page!";
+import * as menu from "./components/menu";
+// Initialize mainMenu
+menu.initToggleMenu();
