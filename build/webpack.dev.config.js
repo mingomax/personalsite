@@ -3,6 +3,7 @@ const { merge } = require("webpack-merge");
 
 const webpackConfiguration = require("../webpack.config");
 const envConfig = require("./shared.config");
+const templateConfig = require("./pages.config");
 
 module.exports = merge(webpackConfiguration, {
   mode: "development",
@@ -41,5 +42,5 @@ module.exports = merge(webpackConfiguration, {
   },
 
   /* Additional plugins configuration */
-  plugins: [],
+  plugins: [...templateConfig.plugins],
 });

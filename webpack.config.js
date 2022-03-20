@@ -57,7 +57,7 @@ module.exports = {
         use: ["babel-loader"],
       },
       {
-        test: /\.(png|gif|jpe?g|svg)$/i,
+        test: /\.(png|gif|jpe?g|svg|json)$/i,
         type: "asset",
         parser: {
           dataUrlCondition: {
@@ -145,6 +145,6 @@ module.exports = {
         },
       ],
     }),
-  ].concat(htmlPluginEntries),
+  ],
   target: "web",
 };

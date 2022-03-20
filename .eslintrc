@@ -1,10 +1,10 @@
 {
-    "extends": "airbnb",
     "env": {
         "node": true,
-        "jasmine": true,
-        "jquery": true
+        "browser": true,
+        "es6": true
     },
+    "extends": "airbnb",
     "parser": "babel-eslint",
     "rules": {
         "func-names": 0,
@@ -108,8 +108,7 @@
         }
     },
     "globals": {
-        "browser": false,
-        "window": true,
-        "document": true
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
     }
 }
