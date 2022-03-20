@@ -6,28 +6,29 @@
 /* CSS Reset */
 @import 'base/reset';
 
+/* Mixins, helpers and functions */
+@import 'base/mixins';
+
+/* CSS base */
+@import 'base/base';
+
 /* CSS print */
 @import 'base/print';
 
 /* Fonts */
-@import 'base/typography';
-
-/* Mixins, helpers and functions */
-@import 'base/mixins';
+@import 'global/typography';
 
 /* Vendor */
+@import 'vendor/include-media';
+@import 'vendor/syntax-highlighting';
+
+/* CSS global */
+@import 'global/global';
 
 /* Components */
-header {
-    display: grid;
-    grid-template-rows: 20% 80%;
-}
+@import 'components/menu',
+'components/header';
 
 /* Browser specific styles */
 @import 'dirty/hacks';
 
-body {
-    height: 100vh;
-    background: rgb(22,74,65);
-    background: linear-gradient(90deg, rgba(22,74,65,1) 0%, rgba(77,119,78,1) 50%, rgba(157,200,141,1) 100%);
-}

@@ -1,0 +1,14 @@
+@mixin easeOut {
+    transition: all 0.5s ease-out;
+}
+
+/**
+*
+* Font size mixin (REMs with pixel fallback)
+*
+**/
+
+@mixin font-size($sizeValue: 16) {
+    font-size: $sizeValue + px;
+    font-size: calc($sizeValue / 10) + rem;
+}
