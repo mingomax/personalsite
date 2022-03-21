@@ -12,6 +12,13 @@ jobs:
                   command: node --version
             - run: npm --version
             - run:
+                  name: Node Sass
+                  command: npm install node-sass
+
+            - run:
+                  name: Rebuild Node Sass
+                  command: sudo npm rebuild node-sass
+            - run:
                   name: "Installing dependencies"
                   command: npm install
             - run: npm run build
