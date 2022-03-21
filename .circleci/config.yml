@@ -21,7 +21,7 @@ jobs:
             - run:
                   name: "Installing dependencies"
                   command: npm install
-            - run: npm run build
+            - run: npm run production
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
