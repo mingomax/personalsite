@@ -6,7 +6,7 @@ jobs:
             - image: cimg/node:17.7.2
         working_directory: ~/dteruel-website
         steps:
-            - pre-build
+            - checkout
             - run:
                   name: "checking node and npm version"
                   command: node --version
@@ -14,7 +14,6 @@ jobs:
             - run:
                   name: "Installing dependencies"
                   command: npm install
-            - build
             - run: npm run build
 
 # Invoke jobs via workflows
@@ -22,5 +21,4 @@ jobs:
 workflows:
     dteruel-workflow:
         jobs:
-            - pre-build
             - build
