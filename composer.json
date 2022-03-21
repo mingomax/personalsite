@@ -1,0 +1,15 @@
+{
+    "name": "dteruel/dtwebsite",
+    "description": "Hack to run static website on Heroku",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Domingos Teruel",
+            "email": "mingomax@dteruel.net.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "heroku/heroku-buildpack-php": "dev-master"
+    }
+}
