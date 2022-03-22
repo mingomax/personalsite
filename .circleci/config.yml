@@ -36,7 +36,7 @@ jobs:
 
             - run:
                 command: |
-                    git push heroku circleci-project-setup:main
+                    git push heroku develop:main
                     # heroku run rake db:migrate
                     sleep 5 # sleep for 5 seconds to wait for dynos
                     # heroku restart
@@ -47,8 +47,8 @@ workflows:
         jobs:
             - build
             - deploy:
-                    requires:
-                        - build
-                    filters:
-                        branches:
-                            only: circleci-project-setup
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: develop
