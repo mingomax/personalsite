@@ -1,6 +1,6 @@
 # My personal website
 
-[![CircleCI](https://circleci.com/gh/mingomax/personalsite/tree/circleci-project-setup.svg?style=svg)](https://circleci.com/gh/mingomax/personalsite/tree/circleci-project-setup)
+[![CircleCI](https://circleci.com/gh/mingomax/personalsite/tree/develop.svg?style=svg)](https://circleci.com/gh/mingomax/personalsite/tree/develop)
 
 ### Overview
 
