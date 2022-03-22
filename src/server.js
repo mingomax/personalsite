@@ -8,8 +8,8 @@ const app = express();
 const teal500 = chalk.hex("#009688");
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = process.env.PORT || 3000;
-const user = process.env.USER;
-const pass = process.env.PASS;
+const user = process.env.BASIC_USER;
+const pass = process.env.BASIC_PASS;
 
 if (user && pass) {
   app.use(express.basicAuth(user, pass));
