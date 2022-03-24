@@ -61,6 +61,15 @@ module.exports = merge(common, {
       new HtmlWebpackPlugin({
         inject: "body",
         template: "./src/index.html",
+        favicon: path.resolve(
+          envConfig.paths.source,
+          "assets/midias/images/favicons",
+          "favicon.ico"
+        ),
+        meta: {
+          viewport: "width=device-width, initial-scale=1.0",
+          "theme-color": "#164a41",
+        },
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
