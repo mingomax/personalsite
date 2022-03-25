@@ -6,11 +6,9 @@ module.exports = {
     /* Path to source files directory */
     source: path.resolve(__dirname, "../src/"),
     /* Path to built files directory */
-    output: path.resolve(__dirname, "../dist/"),
-  },
-  server: {
-    host: "0.0.0.0",
-    port: 8000,
+    build: path.resolve(__dirname, "../dist/"),
+    /* Static files that get copied to build folder */
+    public: path.resolve(__dirname, "../src/assets/"),
   },
   limits: {
     /* Image files size in bytes. Below this value the image file will be served as DataURL (inline base64). */
