@@ -15,6 +15,7 @@
 
 /* Fonts */
 @import 'global/typography';
+
 /* Mixins, helpers and functions */
 @import 'base/partials';
 @import 'base/mixins';
@@ -33,4 +34,3 @@
 
 /* Browser specific styles */
 @import 'dirty/hacks';
-

@@ -9,7 +9,7 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const envConfig = require("./build/shared.config");
+const envConfig = require("./config/shared.config");
 
 const templateFiles = fs
   .readdirSync(envConfig.paths.source)
@@ -54,8 +54,8 @@ module.exports = {
           {
             loader: "postcss-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           "sass-loader",
         ],
