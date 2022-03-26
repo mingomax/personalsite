@@ -2,11 +2,13 @@ $font-size-base: 0.875rem;
 $line-heigh-base: calc(20/14);
 
 /* Breakpoints */
-$breakpoints: ('phone': 320px,
+$breakpoints: (
+    'phone': 320px,
     'smartphone': 425px,
     'tablet': 768px,
     'laptop': 1024px,
-    'desktop': 1441px);
+    'desktop': 1441px
+);
 
 /* Paths */
 /* Grid setup */
@@ -23,7 +25,26 @@ $z-index-level-5: 99999;
 $z-index-level-6: 999999;
 
 :root {
+    --ff-primary: #{$font-open-sans};
+    --ff-secondary: #{$font-space-mono};
+    --fw-regular: #{$font-weight--normal};
+    --fw-medium: #{$font-weight--medium};
+    --fw-bold: #{$font-weight--bold};
     --font-size-base: #{$font-size-base};
     --line-height-base: #{$line-heigh-base};
     --max-width: 960px;
+
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-h4: .875rem;
+}
+
+@media(max-width: 768px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-h4: 1.125rem;
+    }
 }

@@ -41,6 +41,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+        mimetype: 'text/javascript',
         use: ['babel-loader'],
       },
       {

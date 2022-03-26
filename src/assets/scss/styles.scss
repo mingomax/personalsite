@@ -4,6 +4,9 @@
 @import 'vendor/include-media';
 @import 'vendor/syntax-highlighting';
 
+/* Fonts */
+@import 'vendor/typography';
+
 /* Core variables */
 @import 'base/variables';
 
@@ -12,9 +15,6 @@
 
 /* colors definitions */
 @import 'base/colors';
-
-/* Fonts */
-@import 'global/typography';
 
 /* Mixins, helpers and functions */
 @import 'base/partials';

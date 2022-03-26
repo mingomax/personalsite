@@ -1,23 +1,4 @@
 /**
-* heading
-*/
-.h1 {
-    @include font-size(40);
-    font-weight: $font-weight--bold;
-    margin: 20px 0;
-}
-
-.h2 {
-    @include font-size(23);
-    font-weight: $font-weight--bold;
-    margin: 24px 0 15px 0;
-}
-
-.h3 {
-    margin: 15px 0;
-}
-
-/**
 *
 * Arrows
 *

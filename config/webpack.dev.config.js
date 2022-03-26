@@ -77,17 +77,8 @@ module.exports = merge(common, {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(envConfig.paths.source, 'assets/midias', 'brand'),
-          to: path.resolve(envConfig.paths.build, 'assets', 'images'),
-          toType: 'dir',
-          globOptions: {
-            ignore: ['*.DS_Store', 'Thumbs.db'],
-          },
-          noErrorOnMissing: true,
-        },
-        {
-          from: path.resolve(envConfig.paths.source, 'assets/midias/images', 'favicons'),
-          to: path.resolve(envConfig.paths.build, 'assets/images', 'favicons'),
+          from: path.resolve(envConfig.paths.source, 'assets/midias'),
+          to: path.resolve(envConfig.paths.build, 'assets', 'midias'),
           toType: 'dir',
           globOptions: {
             ignore: ['*.DS_Store', 'Thumbs.db'],
@@ -100,10 +91,6 @@ module.exports = merge(common, {
       inject: 'body',
       template: path.resolve(__dirname, '../src/template.html'),
       favicon: `${envConfig.paths.source}/assets/midias/images/favicons/favicon.ico`,
-      meta: {
-        viewport: 'width=device-width, initial-scale=1.0',
-        'theme-color': '#164a41',
-      },
       filename: 'index.html',
     }),
     ...templateConfig.plugins,

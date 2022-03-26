@@ -4,55 +4,28 @@
 
 .main {
     &-header {
-        position: fixed;
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, auto);
-        justify-content: space-around;
-        background: rgba(55, 55, 55, 0.9);
-        z-index: $z-index-level-1;
-
-        &--mobile {
-            height: 100%;
-        }
-    
-        @include media(">=tablet") {
-            top: 0;
-            width: 100%;
-            height: auto;
-            align-content: center;
-            background: $brand-green-02;
-            transform: none;
-            padding: 2rem 0;
-
-            &.condensed {
-                padding: 0;
-            }
-        }
+        display: flex;
+        justify-content: space-between;
+        padding: .75rem;
     }
 
     &-nav {
-        grid-row: 2;
-        padding-bottom: 4rem;
-        transform: translate3d(-100%, 0, 0);
-        display: none;
+        position: fixed;
+        background: var(--black);
+        color: var(--white);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: $z-index-level-3;
+        transform: translateX(0%);
+        transition: transform 250ms cubic-bezier(.5, 0,.5,1);
 
         @include media(">=tablet") {
-            display: flex;
-            grid-row: unset;
-            transform: translate3d(0, 0, 0);
+            position: inherit;
+            background: none;
+            margin: 0 4.5em;
         }
 
-        &--show {
-            @include easeOut;
-            display: flex;
-            transform: translate3d(0, 0, 0);
-        }
-    
-
-        @include media('>=tablet') {
-            grid-row: unset;
-            padding-bottom: unset;
-        }
     }
 }

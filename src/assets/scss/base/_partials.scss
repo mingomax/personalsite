@@ -21,20 +21,26 @@
 
 %item-separator {
     @include media(">=tablet") {
-        & > a {
-            align-self: center;
-            margin:0 1.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: .75rem 0;
+        height: 100%;
+
+        > a {
+            margin: 0 .75em;
         }
 
         &:after {
-            content: "";
+            content: " ";
+            background: var(--white);
+            position: relative;
             display: flex;
             justify-content: center;
             align-self: center;
-            position: relative;
-            width: 2.5px;
-            height: 2.5px;
-            background: var(--white);
+            width: .5em;
+            height: .5em;
             border-radius: 50%;
         }
 
@@ -42,6 +48,6 @@
             &:after {
                 display: none;
             }
-        }    
+        }
     }
 }
