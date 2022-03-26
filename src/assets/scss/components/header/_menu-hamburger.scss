@@ -1,45 +1,56 @@
 /**
-* Menu Button
+* Menu hamburger
 */
-.menu-btn {
-    @include easeOut;
-    position: absolute;
-    z-index: $z-index-level-3;
-    right: 14px;
-    top: 25px;
-    cursor: pointer;
+.hamburger {
+    display: block;
+    position: relative;
+    z-index: $z-index-level-6;
 
-    @include media(">=tablet") {
-        display: none;
+    &,
+    &:before,
+    &:after {
+        background: var(--white);
+        width: 3em;
+        height: .20em;
+        border-radius: 1em;
+        transition: transform 250ms ease-in-out;
     }
 
-    >div {
-        @include easeOut;
-        background: $white;
-        width: 28px;
-        height: 3px;
-        margin: 0 0 5px 0;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
     }
 
-    &.close {
-        transform: rotate(180deg);
+    &:before {
+        top: 6px;
+    }
 
-        >div {
+    &:after {
+        bottom: 6px;
+    }
+}
 
-            // rotate line top
-            &:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
+.close {
 
-            // hode line middle
-            &:nth-child(2) {
-                opacity: 0;
-            }
+    .hamburger {
+        height: 1px;
+        background: transparent;
 
-            // roate line bottom
-            &:nth-child(3) {
-                transform: rotate(135deg) translate(6px, -6px);
-            }
+        &:after,
+        &:before {
+            background: var(--white);
+            width: 3em;
+        }
+
+        &:before {
+            transform: rotate(0.625turn) translate(-4px, 0)
+        }
+
+        &:after {
+            transform: rotate(-0.625turn) translate(-4px, 0)
         }
     }
 }

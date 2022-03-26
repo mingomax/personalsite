@@ -4,4 +4,4 @@ import * as header from "./components/header";
 // initiaize header
 // header.initMainHeader();
 // Initialize mainMenu
-// menu.initToggleMenu();
+menu.initToggleMenu();
