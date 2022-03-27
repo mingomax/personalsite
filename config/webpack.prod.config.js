@@ -12,7 +12,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const common = require('./webpack.common');
 const envConfig = require('./shared.config');
-console.log('PATH: ', path.resolve(__dirname, envConfig.paths.build));
+const templateConfig = require('./pages.config');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -63,13 +63,9 @@ module.exports = merge(common, {
         inject: 'body',
         template: path.resolve(__dirname, '../src/template.html'),
         favicon: `${envConfig.paths.source}/assets/midias/images/favicons/favicon.ico`,
-        meta: {
-          'theme-color': '#164a41',
-        },
         minify: {
           html5: true,
           removeAttributeQuotes: true,
-          removeEmptyElements: true,
           collapseWhitespace: true,
           removeComments: true,
         },
@@ -119,16 +115,8 @@ module.exports = merge(common, {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(envConfig.paths.source, 'assets/midias', 'brand'),
-          to: path.resolve(envConfig.paths.build, 'assets', 'images'),
-          toType: 'dir',
-          globOptions: {
-            ignore: ['*.DS_Store', 'Thumbs.db'],
-          },
-        },
-        {
-          from: path.resolve(envConfig.paths.source, 'assets/midias/images', 'favicons'),
-          to: path.resolve(envConfig.paths.build, 'assets/images', 'favicons'),
+          from: path.resolve(envConfig.paths.source, 'assets/midias'),
+          to: path.resolve(envConfig.paths.build, 'assets', 'midias'),
           toType: 'dir',
           globOptions: {
             ignore: ['*.DS_Store', 'Thumbs.db'],
@@ -140,5 +128,6 @@ module.exports = merge(common, {
       filename: 'assets/css/[name].[chunkhash].css',
       chunkFilename: '[id].css',
     }),
+    ...templateConfig.plugins,
   ],
 });
