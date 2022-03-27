@@ -1,17 +1,14 @@
 .header {
-    
     &-logo {
-        grid-row: 3;
-        margin-top: .75rem;
-        width: 177px;
+        max-width: 177px;
+        z-index: $z-index-level-4;
 
-        @include media(">=tablet") {
-            grid-row: unset;
-        }
+        @include media(">=laptop") {
+            max-width: 277px;
 
-        img {
-            width: 100%;
-            height: 100%;
+            &-sticky {
+                max-width: 177px;
+            }
         }
     }
 }

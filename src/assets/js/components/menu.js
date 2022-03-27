@@ -1,5 +1,5 @@
-const mainHeader = document.querySelector('.main-header'); 
-const menuBtn = document.querySelector('.menu-btn');
+const mainHeader = document.querySelector('.main-header');
+const btnToggle = document.querySelector('.btn_toggle');
 const toggleMenu = () => {
 
     const mainNav = document.querySelector('[class^=main-nav]');
@@ -7,15 +7,15 @@ const toggleMenu = () => {
     const menuItems = menu.querySelectorAll('[class*="menu-item"]');
     console.table("menuItems: ", [mainNav, menu, menuItems])
 
-    let showMenu = menuBtn.classList.contains('close');
+    let showMenu = btnToggle.classList.contains('close');
     if (!showMenu) {
-        menuBtn.classList.add('close');
+        btnToggle.classList.add('close');
         mainHeader.classList.add('main-header--mobile');
         mainNav.classList.add('main-nav--show');
         menu.classList.add('show');
         menuItems.forEach(item => item.classList.add('show'));
     } else {
-        menuBtn.classList.remove('close');
+        btnToggle.classList.remove('close');
         mainHeader.classList.remove('main-header--mobile');
         mainNav.classList.remove('main-nav--show');
         menu.classList.remove('show');
@@ -24,5 +24,5 @@ const toggleMenu = () => {
 }
 
 export const initToggleMenu = () => {
-    menuBtn.addEventListener("click", toggleMenu);
+    btnToggle.addEventListener("click", toggleMenu);
 }

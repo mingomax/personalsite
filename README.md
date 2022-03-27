@@ -1,6 +1,10 @@
 # My personal website
 
 [![CircleCI](https://circleci.com/gh/mingomax/personalsite/tree/develop.svg?style=svg)](https://circleci.com/gh/mingomax/personalsite/tree/develop)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Webpack](https://img.shields.io/badge/-Webpack-2B3A42??style=for-the-badge&logo=webpack)](https://webpack.js.org)
+
+A Sensible webpack 5 boilerplate for static site using Babel, PostCSS and SASS.
 
 ### Overview
 

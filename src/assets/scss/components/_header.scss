@@ -4,55 +4,63 @@
 
 .main {
     &-header {
-        position: fixed;
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, auto);
-        justify-content: space-around;
-        background: rgba(55, 55, 55, 0.9);
-        z-index: $z-index-level-1;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .75rem;
 
-        &--mobile {
-            height: 100%;
-        }
-    
         @include media(">=tablet") {
+            position: sticky;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
-            height: auto;
-            align-content: center;
-            background: $brand-green-02;
-            transform: none;
-            padding: 2rem 0;
+        }
 
-            &.condensed {
-                padding: 0;
+        .btn_toggle {
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            height: 23px;
+            padding: .25em;
+            position: fixed;
+            right: 2em;
+            top: 2.5em;
+            z-index: $z-index-level-6;
+
+            @include media(">=tablet") {
+                display: none;
+            }
+        }
+
+        &-sticky {
+            @include media(">=tablet") {
+                background: $brand-green-01;
+                box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
             }
         }
     }
 
     &-nav {
-        grid-row: 2;
-        padding-bottom: 4rem;
-        transform: translate3d(-100%, 0, 0);
-        display: none;
-
-        @include media(">=tablet") {
-            display: flex;
-            grid-row: unset;
-            transform: translate3d(0, 0, 0);
-        }
+        position: fixed;
+        background: var(--black);
+        color: var(--white);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: $z-index-level-3;
+        transform: translateX(100%);
+        transition: transform 250ms cubic-bezier(.5, 0,.5,1);
 
         &--show {
-            @include easeOut;
-            display: flex;
-            transform: translate3d(0, 0, 0);
+            transform: translateX(0%);
         }
-    
 
-        @include media('>=tablet') {
-            grid-row: unset;
-            padding-bottom: unset;
+        @include media(">=tablet") {
+            background: none;
+            margin: 0 4.5em;
+            position: static;
+            transform: unset;
         }
     }
 }

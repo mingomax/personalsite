@@ -1,4 +1,55 @@
 .menu {
+    display: flex;
+    flex-direction: column;
+    height: 60em;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    @include media(">=tablet") {
+        flex-direction: row;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    &-item {
+        @extend %item-separator;
+    }
+
+    &-link {
+        align-items: center;
+        color: inherit;
+        display: flex;
+        font-weight: var(--fw-bold);
+        font-size: 2.75rem;
+        height: 100%;
+        text-transform: uppercase;
+
+        @include media(">=tablet") {
+            position: relative;
+            font-size: 1.6rem;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    &:before {
+                        content: " ";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        width: 100;
+                        height: .5rem;
+                        background: var(--yellow);
+                        border-radius: 30px;
+                }
+            }
+        }
+    }
+}
+
+.menu-v1 {
     @include easeOut;
     display: flex;
     flex-direction: column;
@@ -11,14 +62,14 @@
     }
 
     &-item {
-        position: 
+        position:
         relative;
         display: flex;
         justify-content: flex-end;
         height: 100%;
         transform: translate3d(400px, 0, 0);
         @extend %item-separator;
-        
+
         &.show {
             @include easeOut;
             //Slide in from the bottom
@@ -44,7 +95,7 @@
             font-weight: $font-weight--bold;
             text-transform: uppercase;
 
-            &.current,            
+            &.current,
             &:hover {
                 box-shadow: inset 0 -4  0 var(--green);
                 color: var(--yellow);
