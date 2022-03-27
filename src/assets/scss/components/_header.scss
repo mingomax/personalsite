@@ -6,7 +6,15 @@
     &-header {
         display: flex;
         justify-content: space-between;
-        padding: .75rem;
+        padding: 0 .75rem;
+
+        @include media(">=tablet") {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+        }
 
         .btn_toggle {
             background: transparent;
@@ -21,6 +29,13 @@
 
             @include media(">=tablet") {
                 display: none;
+            }
+        }
+
+        &-sticky {
+            @include media(">=tablet") {
+                background: $brand-green-01;
+                box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
             }
         }
     }
@@ -42,9 +57,10 @@
         }
 
         @include media(">=tablet") {
-            position: inherit;
             background: none;
             margin: 0 4.5em;
+            position: static;
+            transform: unset;
         }
     }
 }

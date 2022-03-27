@@ -1,5 +1,14 @@
 .header {
     &-logo {
         max-width: 177px;
+        z-index: $z-index-level-4;
+
+        @include media(">=laptop") {
+            max-width: 277px;
+
+            &-sticky {
+                max-width: 177px;
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 .menu {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 60em;
     justify-content: space-evenly;
     align-items: center;
     margin: 0;
@@ -10,21 +10,41 @@
     @include media(">=tablet") {
         flex-direction: row;
         justify-content: space-around;
+        height: 100%;
     }
-
 
     &-item {
         @extend %item-separator;
     }
 
     &-link {
+        align-items: center;
         color: inherit;
+        display: flex;
         font-weight: var(--fw-bold);
-        font-size: var(--fs-h2);
+        font-size: 2.75rem;
+        height: 100%;
         text-transform: uppercase;
 
         @include media(">=tablet") {
+            position: relative;
             font-size: 1.6rem;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    &:before {
+                        content: " ";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        width: 100;
+                        height: .5rem;
+                        background: var(--yellow);
+                        border-radius: 30px;
+                }
+            }
         }
     }
 }
