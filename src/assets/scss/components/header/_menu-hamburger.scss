@@ -10,8 +10,8 @@
     &:before,
     &:after {
         background: var(--white);
-        width: 3em;
-        height: .20em;
+        width: 1.5em;
+        height: .2em;
         border-radius: 1em;
         transition: transform 250ms ease-in-out;
     }
@@ -42,15 +42,15 @@
         &:after,
         &:before {
             background: var(--white);
-            width: 3em;
+            width: 1.5em;
         }
 
         &:before {
-            transform: rotate(0.625turn) translate(-4px, 0)
+            transform: rotate(0.625turn) translate(0, 0)
         }
 
         &:after {
-            transform: rotate(-0.625turn) translate(-4px, 0)
+            transform: rotate(-0.625turn) translate(0, 0)
         }
     }
 }

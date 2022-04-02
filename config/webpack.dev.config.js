@@ -70,6 +70,7 @@ module.exports = merge(common, {
       IS_DEV: isDevelopment,
     }),
     new webpack.ProgressPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin({
       verbose: true,
       cleanOnceBeforeBuildPatterns: ['**/*', '!stats.json'],

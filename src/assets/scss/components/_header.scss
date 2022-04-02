@@ -6,7 +6,7 @@
     &-header {
         display: flex;
         justify-content: space-between;
-        padding: 0 .75rem;
+        padding: 1em;
 
         @include media(">=tablet") {
             position: sticky;
@@ -20,11 +20,11 @@
             background: transparent;
             border: 0;
             cursor: pointer;
-            height: 23px;
-            padding: .25em;
+            height: 1.2em;
+            margin: 1em auto;
             position: fixed;
-            right: 2em;
-            top: 2.5em;
+            right: 1em;
+            top: 1em;
             z-index: $z-index-level-6;
 
             @include media(">=tablet") {
@@ -58,9 +58,13 @@
 
         @include media(">=tablet") {
             background: none;
-            margin: 0 4.5em;
+            margin: 0 .5em;
             position: static;
             transform: unset;
+        }
+
+        @include media(">=desktop") {
+            margin: 0 4.5em;
         }
     }
 }
